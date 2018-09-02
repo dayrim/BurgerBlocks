@@ -43,9 +43,9 @@ export class VenuesShellComponent implements OnInit {
               .reduce((accumulator, currentValue) => accumulator || currentValue);
           });
           // Dispatches actions to fetch venue details
-          // filteredVenues.map(item =>
-          //   this.store.dispatch(new VenuesAction.LoadVenueDetailsAction(item.venue.id))
-          // );
+          filteredVenues.map(item =>
+            this.store.dispatch(new VenuesAction.LoadVenueDetailsAction(item.venue.id))
+          );
         }
       }
     );
