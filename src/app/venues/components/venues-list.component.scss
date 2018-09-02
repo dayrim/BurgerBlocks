@@ -1,0 +1,83 @@
+agm-map {
+  color: #000000;
+  height: 500px;
+}
+.mapWrapper {
+  -webkit-box-shadow: 0px 0px 20px -2px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 0px 20px -2px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 0px 20px -2px rgba(0, 0, 0, 0.5);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  overflow: hidden;
+  -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC); /* this fixes the overflow:hidden in Chrome/Opera */
+}
+.wrapper {
+  width: 100%;
+}
+.divider {
+  height: 50px;
+}
+.cellContent:hover,
+.cellContent:focus,
+.cellContent:active {
+  background-color: rgba(29, 28, 28, 0.144);
+  opacity: 1;
+}
+
+.basicContainer {
+  font-family: Geneva, Tahoma, Verdana, sans-serif;
+  color: #ffffff;
+  padding-left: 60px;
+  padding-right: 60px;
+  display: flex;
+  justify-content: center;
+  background: #e34373;
+  background: -moz-linear-gradient(45deg, #e34373 5%, #4a59df 96%);
+  background: -webkit-linear-gradient(45deg, #e34373 5%, #4a59df 96%);
+  background: linear-gradient(45deg, #e34373 5%, #4a59df 96%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e34373', endColorstr='#4a59df',GradientType=1 );
+}
+
+.cellContent {
+  cursor: pointer;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-auto-flow: dense;
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+}
+.grid > * {
+  border: 1px solid #9e9e9e;
+  width: 100%;
+  position: relative;
+}
+.grid > *::before {
+  content: '';
+  display: inline-block;
+
+  padding-bottom: calc(100% / (var(--aspect-ratio)));
+}
+[style='--aspect-ratio: 1/1;'] {
+  grid-column: span 1;
+}
+@media only screen and (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .basicContainer {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}

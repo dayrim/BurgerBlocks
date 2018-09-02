@@ -1,0 +1,27 @@
+<div class=" basicContainer">
+    <div class="wrapper">
+        <h1>{{ title }}</h1>
+        <div class="mapWrapper">
+            <agm-map [latitude]="58.376840" [longitude]="26.720743" [zoom]="13" #googleMap>
+                <agm-marker *ngFor="let marker of markers; let i = index" [title]="marker.title" [label]="marker.label" [latitude]="marker.latitude"
+                    [longitude]="marker.longitude">
+                    <agm-info-window>
+                        <strong>{{marker.title}}</strong>
+                    </agm-info-window>
+                </agm-marker>
+                <agm-circle [strokePosition]="0" [strokeOpacity]='1' [strokeColor]="'Red'" [strokeWeight]='0.4' [fillOpacity]='0.05' [fillColor]="'Red'"
+                    [latitude]="58.3780" [longitude]="26.7321" [radius]="1000"></agm-circle>
+            </agm-map>
+        </div>
+        <div class="divider"> </div>
+
+        <div class=" grid ">
+            <div [ngStyle]="{background: 'url(' + marker.imageUrl + ') no-repeat center center ',
+             'background-size': 'cover'}" class="cell" style="--aspect-ratio: 1/1;" *ngFor="let marker of markers">
+                <div class="cellContent">
+                    <strong>{{marker.title}}</strong>
+                </div>
+            </div>
+        </div>
+        <div class="divider"> </div>
+    </div>
